@@ -4,6 +4,8 @@ i3wm with conky status bar
 i3wm and conky setting/configurations files.
 Based on [ This ](https://github.com/levinit/i3wm-config "i3wm-config") and I did some modification to make it more usable.
 
+![](./Pics/workspaces.png)
+![](./Pics/Conky_status.png)
 
 ----------
 
@@ -44,6 +46,7 @@ The basic key bindings is following:
 ![](./Pics/Whole_i3w_mini_descp.png)
 
 Also we can use the `Mod+p` to jump to the opened windw by searching its title
+![](./Pics/i3w_window_jumper.png)
 
 # Tips
 - TeamViewer: Move it to a worksapce(Mod + Shift + N) and make it fullscreen(Mod + f)

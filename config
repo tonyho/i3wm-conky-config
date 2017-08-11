@@ -38,7 +38,8 @@ font pango:FontAwesome 11
 bar {
 #status_command /home/hexiongjun/.config/i3/start-conky-i3statusbar.sh
 #status_command /home/hexiongjun/.config/i3/runconky.sh
-status_command /home/hexiongjun/.config/i3/i3status-conky/i3status.sh
+#status_command /home/hexiongjun/.config/i3/i3status-conky/i3status.sh
+status_command /home/$USER/.config/i3/i3status-conky/i3status.sh
 #	status_command i3status
 #    position top
 #    mode hide
@@ -65,6 +66,11 @@ status_command /home/hexiongjun/.config/i3/i3status-conky/i3status.sh
 # external display device(use the command "xrandr" to see the display device name)
 # eg. #exec --no-startup-id xrandr --output HDMI1 1920*1080 --right-of eDP1
 
+
+# Find the window use dmenu to select an open window
+## script got from: https://github.com/minos-org/minos-desktop-tools/blob/master/tools/dmenu-i3-window-jumper
+bindsym $mod+p exec /home/$USER/.config/i3/dmenu-i3-window-jumper.sh
+#bindsym $mod+p exec python /home/$USER/.config/i3/i3-wm-scripts/nextfind.py 
 
 #---window style---
 
@@ -118,12 +124,12 @@ bindsym $mod+Shift+f exec firefox
 # printscreen(use "scrot".Print=PrtSc/PrintScreen)
 ## The -s is to screen shot a section
 #bindsym $mod+Print exec scrot -s
-bindsym $mod+Print exec scrot -s
+#bindsym $mod+Print exec scrot -s
 
 # scrot & gimp - root
 bindsym Print 					exec scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
 # scrot & gimp - select window or rectangle
-bindsym $mod1+Print 	exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'
+bindsym $mod+Print 	exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'
 
 
 
@@ -269,7 +275,7 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # focus the parent container
-bindsym $mod+mod4+p focus parent
+#bindsym $mod+mod4+p focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
