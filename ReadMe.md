@@ -71,3 +71,9 @@ Also we can use the `Mod+p` to jump to the opened window by searching its title
     When an application overlay the i3 worksapce and can't switch to other workspace,
     and cannot close that application
 - It takes a little time to be effect when update the conky status bar configuration
+
+# Ref
+- Color theme configuration: [ Color Theme ](https://thomashunter.name/i3-configurator "i3wm-config")
+- Reference setting: [Reference Setting](https://github.com/erikdubois/LinuxMint182i3 "i3wm-config")
+- Reference setting: [Reference Setting](https://github.com/ID1258/oh-my-i3 "i3wm-config")
+- Deepin Linux design to know the some details of the DE and WM: [Learn](http://www.jianshu.com/p/e871723f9460 "i3wm-config")
