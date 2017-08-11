@@ -1,0 +1,363 @@
+# i3 config file
+# see http://i3wm.org/docs/userguide.html for a complete reference!
+
+# Super key(mod4 =windows logo key/Command key)
+set $mod Mod4
+
+#===autostart parograms===
+
+#exec --no-startup-id mate-power-manager
+exec --no-startup-id nm-applet
+exec --no-startup-id redshift
+exec --no-startup-id fcitx
+exec --no-startup-id /home/hexiongjun/Soft/electronic-wechat-linux-x64/electronic-wechat &
+#exec --no-startup-id megasync
+#exec --no-startup-id ss-qt5 &
+#exec --no-startup-id xcompmgr &
+
+
+
+#===appearance===
+
+#---wallpaper---
+
+# single pictures
+#exec --no-startup-id feh --bg-scale "~/Pictures/wallpapaer/wallpaper.jpg"
+
+# auto change
+exec ~/.config/i3/wallpaper.sh &
+
+# font 
+## We must use the fontawesome font to display fontaswesome picture/icons
+#font pango:monospace 10
+#font pango:Fantasque Sans Mono 12
+font pango:FontAwesome 11
+
+#---bar---
+
+bar {
+#status_command /home/hexiongjun/.config/i3/start-conky-i3statusbar.sh
+#status_command /home/hexiongjun/.config/i3/runconky.sh
+status_command /home/hexiongjun/.config/i3/i3status-conky/i3status.sh
+#	status_command i3status
+#    position top
+#    mode hide
+#	workspace_buttons yes
+#	output eDP1
+#	tray_output primary
+#	tray_padding 0
+#	separator_symbol "|"
+#	
+#	colors {
+#	background #285477
+#	statusline #dedede
+#	separator #2d2d2d
+#	focused_workspace #636e88 #285de7 #dedfdg
+#	active_workspace #556677 #234567 #56ef67
+#	inactive_workspace #636d72 #2d2d2d #dedede
+#	urgent_workspace #ffffff #900000 #d23d32
+#	}
+}
+
+# tray icons(eDP1 is the display device's name,use the command "xrandr" to see.)
+#exec --no-startup-id xrandr --output eDP1 --primary
+
+# external display device(use the command "xrandr" to see the display device name)
+# eg. #exec --no-startup-id xrandr --output HDMI1 1920*1080 --right-of eDP1
+
+
+#---window style---
+
+# new window
+new_window none
+new_float normal
+hide_edge_borders both
+
+# window colors
+#  class                 border   backgr.  text  indicator  child_border
+client.focused          #4c7899  #285577  #ffffff  #2e9ef4   #285577
+client.focused_inactive #81c2d6  #5f676a  #ffffff  #484e50   #0b6e48
+client.unfocused        #c9cabb  #222222  #888888  #292d2e   #222222
+client.urgent           #2f343a  #900000  #ffffff  #199475   #900000
+client.placeholder      #a2b4ba  #0c0c0c  #ffffff  #1793d0   #0c0c0c
+client.background       #82abba
+
+# popups
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+
+# float programs(find the programs'names in "/usr/share/applictions")
+for_window [class="Gpicview"] floating enable
+for_window [class="mpv"] floating enable
+for_window [class="Gimp"] floating enable
+for_window [class="Xarchiver"] floating enable
+for_window [class="Genymotion"] floating enable
+for_window [class="Vlc"] floating enable
+#for_window [class="firefox"] floating enable
+#for_window [class="electronic-wechat"] floating enable
+#for_window [class="skype"] floating enable
+#for_window [class="skypeforlinux"] floating enable
+for_window [class="goldendict"] floating enable
+for_window [class="thunderbird"] floating enable
+for_window [class="VirtualBox"] floating enable
+for_window [class="shadowsocks-qt5"] floating enable
+for_window [class="vmware-workstation"] floating enable
+
+
+#===programs shortcuts===
+
+# dmenu (a program launcher)
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+# terminal
+bindsym $mod+Return exec i3-sensible-terminal
+
+# browsers
+bindsym $mod+Shift+f exec firefox
+
+# printscreen(use "scrot".Print=PrtSc/PrintScreen)
+## The -s is to screen shot a section
+#bindsym $mod+Print exec scrot -s
+bindsym $mod+Print exec scrot -s
+
+# scrot & gimp - root
+bindsym Print 					exec scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
+# scrot & gimp - select window or rectangle
+bindsym $mod1+Print 	exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'
+
+
+
+# GUI file manager
+bindsym $mod+e 			exec --no-startup-id pcmanfm
+
+
+#===workspace control===
+# => 设定mod键与工作区名
+#set $mod  Mod4
+#1: Command Line
+set $WS1  1:  
+#2: Internet
+set $WS2  2:  
+#3: PDF and Doc
+set $WS3  3:  
+#4: Contract
+set $WS4  4:  
+#5： Files
+set $WS5  5:  
+#6: Android develop, IDE
+set $WS6  6: 
+#7: MCU, Telink Eclipse, BLE
+set $WS7  7: 
+#8: Player
+set $WS8  8: 
+# VM
+set $WS9  9: 
+# Miscs
+set $WS10 0: 
+
+# Workspace names
+#workspace "1:Arch" output eDP1
+#workspace "2:Web" output eDP1
+#workspace "3:Code" output eDP1
+#workspace "9:Mail" output eDP1
+
+# putting clients on specific workspaces
+assign [class="terminator"] $WS1
+assign [class="gnome-terminal"] $WS1
+assign [class="securecrt"] $WS1
+
+assign [class="firefox"] $WS2
+assign [class="chrome"] $WS2
+assign [class="vivaldi-stable"] $WS2
+assign [class="Vivaldi"] $WS2
+assign [class="chromium-browser"] $WS2
+
+assign [class="wps-office-wpp"] $WS3
+assign [class="wps-office-wps"] $WS3
+assign [class="wps-office-et"] $WS3
+assign [class="Evince"] $WS3
+assign [class="evince"] $WS3
+assign [class="okular"] $WS3
+assign [class="wiznote"] $WS3
+
+
+assign [class="thunderbird"] $WS4
+assign [class="skype"] $WS4
+assign [class="skypeforlinux"] $WS4
+assign [class="electronic-wechat"] $WS4
+
+assign [class="PCManFM"] $WS5
+assign [class="pcmanfm"] $WS5
+assign [class="nautilus"] $WS5
+
+
+#---switch workspace---
+
+# mod1 --> alt
+# switch to near workspace
+bindsym $mod+Tab workspace next
+bindsym mod1+Tab workspace prev
+
+# switch to workspace
+bindsym $mod+1 workspace $WS1
+bindsym $mod+2 workspace $WS2
+bindsym $mod+3 workspace $WS3
+bindsym $mod+4 workspace $WS4
+bindsym $mod+5 workspace $WS5
+bindsym $mod+6 workspace $WS6
+bindsym $mod+7 workspace $WS7
+bindsym $mod+8 workspace $WS8
+bindsym $mod+9 workspace $WS9
+bindsym $mod+0 workspace $WS10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $WS1
+bindsym $mod+Shift+2 move container to workspace $WS2
+bindsym $mod+Shift+3 move container to workspace $WS3
+bindsym $mod+Shift+4 move container to workspace $WS4
+bindsym $mod+Shift+5 move container to workspace $WS5
+bindsym $mod+Shift+6 move container to workspace $WS6
+bindsym $mod+Shift+7 move container to workspace $WS7
+bindsym $mod+Shift+8 move container to workspace $WS8
+bindsym $mod+Shift+9 move container to workspace $WS9
+bindsym $mod+Shift+0 move container to workspace $WS10
+
+
+#===window control===
+
+# fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# kill focused window($mod4=Alt)
+bindsym mod1+F4 kill
+
+# hide | show window(minus is "-" and plus is "+".)
+bindsym $mod+minus move scratchpad
+bindsym $mod+plus scratchpad show
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+t layout tabbed
+bindsym $mod+c layout toggle split
+
+# change border style
+bindsym $mod+u border none
+bindsym $mod+n border normal
+bindsym $mod+o border 1pixel
+bindsym $mod+b border toggle
+
+#---window focus---
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# foucus follows mouse(cursor)
+focus_follows_mouse yes
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# focus the parent container
+bindsym $mod+mod4+p focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+#---move window---
+
+# Use Mouse+$mod to drag a floating window
+floating_modifier $mod
+
+# move floating/tiling window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+#---split window---
+
+# horizontal orientation
+bindsym $mod+mod1+h split h
+
+# vertical orientation
+bindsym $mod+v split v
+
+
+#---resize window---
+
+mode "resize" {
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+    	# same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+    
+    	# back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+#you can also use the mouse for resizing
+
+#===volume control===
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -c 0 -q set Master 2dB+ unmute
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -c 0 -q set Master 2dB- unmute
+bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle
+
+#===power manager===
+set $mode_system select: lock(L) exit(E) reboot(R) poweroff(O) cancel(Esc)
+bindsym $mod+Shift+q mode "$mode_system"
+mode "$mode_system" {
+    bindsym l exec --no-startup-id i3lock -c '#000000', mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym o exec --no-startup-id systemctl poweroff, mode "default"
+    bindsym Escape mode "default"
+}
+
+# screen off | sleep | shutdown(time unit: seconds)
+#exec --no-startup-id xset dpms 300 1357 6789
+exec --no-startup-id xset dpms 300
+
+
+#===manage i3===
+
+# reload the configuration file
+bindsym $mod+Shift+r reload
+
+# restart i3 inplace
+bindsym $mod+Shift+s restart
+
+# i3lock
+ mode "i3lock: Return to lock/Escape to Cancel" {
+            bindsym Return mode "default" exec i3lock -I 600 -i ~/Pictures/lock.jpg
+            bindsym Escape mode "default"
+    }
+
+bindsym Ctrl+mod1+l mode "i3lock: Return to lock/Escape to Cancel"
+
+
+# exit i3
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
