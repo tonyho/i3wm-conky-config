@@ -9,7 +9,10 @@ The workspace bar:
 ![](./Pics/workspaces.png)
 
 The status bar:
+
 ![](./Pics/Conky_status.png)
+
+To view the screenshot of whole screen, scroll down...
 
 ----------
 
