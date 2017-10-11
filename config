@@ -99,6 +99,7 @@ for_window [class="Gimp"] floating enable
 for_window [class="Xarchiver"] floating enable
 for_window [class="Genymotion"] floating enable
 for_window [class="Vlc"] floating enable
+for_window [class="workrave"] floating enable
 #for_window [class="firefox"] floating enable
 #for_window [class="electronic-wechat"] floating enable
 #for_window [class="skype"] floating enable
@@ -127,7 +128,8 @@ bindsym $mod+Shift+f exec firefox
 #bindsym $mod+Print exec scrot -s
 
 # scrot & gimp - root
-bindsym Print 					exec scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
+#bindsym Print 					exec scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
+bindsym Print 					exec ksnapshot --region
 # scrot & gimp - select window or rectangle
 bindsym $mod+Print 	exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'
 
