@@ -10,7 +10,7 @@ set $mod Mod4
 exec --no-startup-id nm-applet
 exec --no-startup-id redshift
 exec --no-startup-id fcitx
-exec --no-startup-id /home/hexiongjun/Soft/electronic-wechat-linux-x64/electronic-wechat &
+#exec --no-startup-id /home/hexiongjun/Soft/electronic-wechat-linux-x64/electronic-wechat &
 #exec --no-startup-id megasync
 #exec --no-startup-id ss-qt5 &
 #exec --no-startup-id xcompmgr &
@@ -27,11 +27,14 @@ exec --no-startup-id /home/hexiongjun/Soft/electronic-wechat-linux-x64/electroni
 # auto change
 exec ~/.config/i3/wallpaper.sh &
 
-# font 
+# font
 ## We must use the fontawesome font to display fontaswesome picture/icons
-#font pango:monospace 10
-#font pango:Fantasque Sans Mono 12
-font pango:FontAwesome 11
+# Download the fonts from
+#   https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/RobotoMono/complete
+#  Then Install them
+#font pango:FontAwesome 11
+#font pango:Roboto Mono, Awesome 11
+font pango:RobotoMono Nerd Font 11
 
 #---bar---
 
@@ -48,7 +51,7 @@ status_command /home/$USER/.config/i3/i3status-conky/i3status.sh
 #	tray_output primary
 #	tray_padding 0
 #	separator_symbol "|"
-#	
+#
 #	colors {
 #	background #285477
 #	statusline #dedede
@@ -70,7 +73,7 @@ status_command /home/$USER/.config/i3/i3status-conky/i3status.sh
 # Find the window use dmenu to select an open window
 ## script got from: https://github.com/minos-org/minos-desktop-tools/blob/master/tools/dmenu-i3-window-jumper
 bindsym $mod+p exec /home/$USER/.config/i3/dmenu-i3-window-jumper.sh
-#bindsym $mod+p exec python /home/$USER/.config/i3/i3-wm-scripts/nextfind.py 
+#bindsym $mod+p exec python /home/$USER/.config/i3/i3-wm-scripts/nextfind.py
 
 #---window style---
 
@@ -101,7 +104,10 @@ for_window [class="Genymotion"] floating enable
 for_window [class="Vlc"] floating enable
 for_window [class="workrave"] floating enable
 #for_window [class="firefox"] floating enable
-#for_window [class="electronic-wechat"] floating enable
+for_window [class="electronic-wechat"] floating enable
+for_window [class="wewechat"] floating enable
+for_window [class="Electronic-Wechat"] floating enable
+for_window [class="wechat"] floating enable
 #for_window [class="skype"] floating enable
 #for_window [class="skypeforlinux"] floating enable
 for_window [class="goldendict"] floating enable
@@ -145,11 +151,11 @@ bindsym $mod+e 			exec --no-startup-id pcmanfm
 #1: Command Line
 set $WS1  1:  
 #2: Internet
-set $WS2  2:  
+set $WS2  2: 
 #3: PDF and Doc
 set $WS3  3:  
 #4: Contract
-set $WS4  4:  
+set $WS4  4: 
 #5： Files
 set $WS5  5:  
 #6: Android develop, IDE
@@ -319,7 +325,7 @@ mode "resize" {
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
-    
+
     	# back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
